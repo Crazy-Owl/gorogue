@@ -1,0 +1,25 @@
+{
+    "Filename": "monsters.png",
+    "W": 32,
+    "H": 32,
+    "TileSpecs": [
+        {
+            "X": 0,
+            "Y": 0,
+            "Name": "shadow",
+            "Properties": ["monster"]
+        },
+        {
+            "X": 64,
+            "Y": 0,
+            "Name": "efreet",
+            "Properties": ["monster"]
+        },
+        {
+            "X": 64,
+            "Y": 32,
+            "Name": "ice_fiend",
+            "Properties": ["monster"]
+        }
+    ]
+}

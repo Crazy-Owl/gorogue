@@ -1,0 +1,43 @@
+{
+    "Filename": "dg_grounds32.png",
+    "W": 32,
+    "H": 32,
+    "TileSpecs": [
+        {
+            "X": 0,
+            "Y": 0,
+            "Name": "gray_floor",
+            "Properties": ["floor", "passable", "terrain"]
+        },
+        {
+            "X": 0,
+            "Y": 128,
+            "Name": "lava_floor",
+            "Properties": ["floor", "terrain"]
+        },
+        {
+            "X": 96,
+            "Y": 0,
+            "Name": "gray_wall",
+            "Properties": ["wall", "terrain"]
+        },
+        {
+            "X": 0,
+            "Y": 96,
+            "Name": "pebble_floor",
+            "Properties": ["floor", "passable", "terrain"]
+        },
+        {
+            "X": 0,
+            "Y": 32,
+            "Name": "grass",
+            "Properties": ["floor", "passable", "terrain"]
+        },
+        {
+            "X": 96,
+            "Y": 32,
+            "Name": "sand",
+            "Properties": ["floor", "passable", "terrain"]
+        }
+    ]
+}
