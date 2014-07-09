@@ -54,25 +54,11 @@ func main() {
 				running = false
 			case *sdl.KeyDownEvent:
 				ev := event.(*sdl.KeyDownEvent)
-				ks := ev.Keysym
-				switch ks.Sym {
-				// case sdl.K_LEFT:
-				// 	vp.Move(-2, 0)
-				// case sdl.K_RIGHT:
-				// 	vp.Move(2, 0)
-				// case sdl.K_UP:
-				// 	vp.Move(0, -2)
-				// case sdl.K_DOWN:
-				// 	vp.Move(0, 2)
-				case sdl.K_ESCAPE:
-					running = false
-				default:
-					gs.KeyPressed(ev)
-				}
+				gs.KeyPressed(ev)
 			}
 		}
 		renderer.SetDrawColor(255, 0, 0, 0)
-		gs.Update(dt)
+		running = gs.Update(dt)
 		gs.Render(renderer)
 		renderer.Present()
 	}

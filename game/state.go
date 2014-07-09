@@ -30,15 +30,21 @@ type GameState struct {
 	currentMap *TiledMap
 	viewPort   *ViewPort
 	hero       Entity
+	running    bool
 }
 
 func MakeGameState(m *TiledMap, vp *ViewPort, h *Hero) GameState {
-	return GameState{make([]Entity, 0), m, vp, h}
+	return GameState{make([]Entity, 0), m, vp, h, true}
 }
 
-func (gs *GameState) Update(dt uint32) {
+func (gs *GameState) Update(dt uint32) (running bool) {
+	if !gs.running {
+		running = false
+		return
+	}
 	hero := gs.hero.(*Hero)
 	gs.viewPort.CenterAt(hero.X, hero.Y)
+	running = true
 	return
 }
 
@@ -57,5 +63,7 @@ func (gs *GameState) KeyPressed(ev *sdl.KeyDownEvent) {
 		gs.hero.Move(0, -1)
 	case sdl.K_DOWN:
 		gs.hero.Move(0, 1)
+	case sdl.K_ESCAPE:
+		gs.running = false
 	}
 }
