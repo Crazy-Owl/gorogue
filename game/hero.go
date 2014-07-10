@@ -23,7 +23,7 @@ func (h *Hero) Update(dt uint32) {
 func (h *Hero) MoveTo(x, y int32) {
 	srcCell := h.CurrentMap.Get(h.X, h.Y)
 	destCell := h.CurrentMap.Get(x, y)
-	if destCell != nil {
+	if destCell != nil && (destCell.Is("passable") || destCell.Is("ground_passable")) {
 		srcCell.RemoveObject(h)
 		destCell.AddObject(h)
 		h.X = x
