@@ -16,7 +16,7 @@
             "Properties": ["floor", "terrain"]
         },
         {
-            "X": 96,
+            "X": 192,
             "Y": 0,
             "Name": "gray_wall",
             "Properties": ["wall", "terrain"]
