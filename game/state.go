@@ -63,6 +63,22 @@ func (gs *GameState) KeyPressed(ev *sdl.KeyDownEvent) {
 		gs.hero.Move(0, -1)
 	case sdl.K_DOWN:
 		gs.hero.Move(0, 1)
+	case sdl.K_1:
+		gs.hero.Move(-1, 1)
+	case sdl.K_2:
+		gs.hero.Move(0, 1)
+	case sdl.K_3:
+		gs.hero.Move(1, 1)
+	case sdl.K_4:
+		gs.hero.Move(-1, 0)
+	case sdl.K_6:
+		gs.hero.Move(1, 0)
+	case sdl.K_7:
+		gs.hero.Move(-1, -1)
+	case sdl.K_8:
+		gs.hero.Move(0, -1)
+	case sdl.K_9:
+		gs.hero.Move(1, -1)
 	case sdl.K_ESCAPE:
 		gs.running = false
 	}
