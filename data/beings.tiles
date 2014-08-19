@@ -20,6 +20,12 @@
             "Y": 32,
             "Name": "ice_fiend",
             "Properties": ["monster"]
+        },
+        {
+            "X": 96,
+            "Y": 32,
+            "Name": "fire_fiend",
+            "Properties": ["monster"]
         }
     ]
 }
