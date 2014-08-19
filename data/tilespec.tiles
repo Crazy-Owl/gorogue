@@ -6,8 +6,8 @@
         {
             "X": 0,
             "Y": 0,
-            "Name": "gray_floor",
-            "Properties": ["floor", "passable", "terrain"]
+            "Name": "gray_nothing",
+            "Properties": ["nothing"]
         },
         {
             "X": 0,
