@@ -34,7 +34,7 @@ func main() {
 	m := game.CreateMap(256, 256)
 	vp := game.ViewPort{&m, 32, 32, 0, 0, int32(winW / 32), int32(winH / 32)}
 
-	hero := game.Hero{5, 5, 10, manager.GetTileOrNil("ice_fiend"), &m}
+	hero := game.Hero{5, 5, 10, manager.GetTileOrNil("fire_fiend"), &m}
 	m.AddObject(&hero, hero.X, hero.Y)
 
 	gs := game.MakeGameState(&m, &vp, &hero)
