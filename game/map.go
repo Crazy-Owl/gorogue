@@ -33,13 +33,21 @@ func CreateMap(w, h int32) TiledMap {
 	cells := make([][]Cell, h)
 	tm := TiledMap{cells, objects, w, h}
 	manager := GetResourceManager(GetRenderer())
-	tiles := manager.FilterTiles("terrain")
+	// tiles := manager.FilterTiles("terrain")
+	passable_tiles := manager.FilterTiles("passable")
+	wall_tiles := manager.FilterTiles("wall")
 
 	for c_row := range cells {
 		cells[c_row] = make([]Cell, w)
+		var tile *Tile
 		// random generation for now
 		for c_col := range cells[c_row] {
-			cell := Cell{tiles[rand.Intn(len(tiles))], make([]Entity, 16), make([]string, 16)}
+			if rand.Intn(100) > 15 {
+				tile = passable_tiles[rand.Intn(len(passable_tiles))]
+			} else {
+				tile = wall_tiles[rand.Intn(len(wall_tiles))]
+			}
+			cell := Cell{tile, make([]Entity, 16), make([]string, 16)}
 			cell.properties = cell.tile.properties
 			tm.SetAt(cell, int32(c_col), int32(c_row))
 		}
