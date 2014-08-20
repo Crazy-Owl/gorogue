@@ -37,8 +37,18 @@ func CreateMap(w, h int32) TiledMap {
 	passable_tiles := manager.FilterTiles("passable")
 	wall_tiles := manager.FilterTiles("wall")
 
+	empty_tile := manager.GetTileOrNil("gray_nothing")
+
 	for c_row := range cells {
 		cells[c_row] = make([]Cell, w)
+		for c_col := range cells[c_row] {
+			cell := Cell{empty_tile, make([]Entity, 1), make([]string, 16)}
+			cell.properties = cell.tile.properties
+			tm.SetAt(cell, int32(c_col), int32(c_row))
+		}
+	}
+
+	for c_row := range cells {
 		var tile *Tile
 		// random generation for now
 		for c_col := range cells[c_row] {
