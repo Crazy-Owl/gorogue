@@ -6,17 +6,21 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 	"github.com/veandco/go-sdl2/sdl_image"
 	"github.com/veandco/go-sdl2/sdl_ttf"
+	"math/rand"
 	// "log"
 )
 
 const (
 	winW = 1200
 	winH = 900
+	mapW = 256
+	mapH = 256
 )
 
 func main() {
 	var event sdl.Event
 	var ts, ts2, dt uint32
+	var hX, hY uint32
 
 	sdl.Init(sdl.INIT_EVERYTHING)
 	img.Init(img.INIT_PNG)
@@ -31,10 +35,20 @@ func main() {
 	game.SetRenderer(renderer)
 
 	manager := game.GetResourceManager(renderer)
-	m := game.CreateMap(256, 256)
+	m := game.CreateMap(mapW, mapH)
 	vp := game.ViewPort{&m, 32, 32, 0, 0, int32(winW / 32), int32(winH / 32)}
 
-	hero := game.Hero{5, 5, 10, manager.GetTileOrNil("fire_fiend"), &m}
+	heroCanBePlaced := false
+	for !heroCanBePlaced {
+		hX = rand.Uint32() % mapW
+		hY = rand.Uint32() % mapH
+		if m.Get(int32(hX), int32(hY)).Is("passable") {
+			heroCanBePlaced = true
+		}
+	}
+
+	hero := game.Hero{int32(hX), int32(hY), 10, manager.GetTileOrNil("fire_fiend"), &m}
+
 	m.AddObject(&hero, hero.X, hero.Y)
 
 	gs := game.MakeGameState(&m, &vp, &hero)
