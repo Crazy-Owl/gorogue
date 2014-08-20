@@ -11,10 +11,10 @@ type State interface {
 }
 
 type Entity interface {
-	DrawAt(*sdl.Renderer, int32, int32)
+	DrawAt(*sdl.Renderer, uint32, uint32)
 	Update(uint32)
 	Move(int32, int32)
-	MoveTo(int32, int32)
+	MoveTo(uint32, uint32)
 	Interact(Entity)
 	Texture() *sdl.Texture
 	Rect() *sdl.Rect

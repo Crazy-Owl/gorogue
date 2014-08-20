@@ -36,18 +36,20 @@ func main() {
 
 	manager := game.GetResourceManager(renderer)
 	m := game.CreateMap(mapW, mapH)
-	vp := game.ViewPort{&m, 32, 32, 0, 0, int32(winW / 32), int32(winH / 32)}
+	m.GenerateMap()
+
+	vp := game.ViewPort{&m, 32, 32, 0, 0, winW / 32, winH / 32}
 
 	heroCanBePlaced := false
 	for !heroCanBePlaced {
 		hX = rand.Uint32() % mapW
 		hY = rand.Uint32() % mapH
-		if m.Get(int32(hX), int32(hY)).Is("passable") {
+		if m.Get(hX, hY).Is("passable") {
 			heroCanBePlaced = true
 		}
 	}
 
-	hero := game.Hero{int32(hX), int32(hY), 10, manager.GetTileOrNil("fire_fiend"), &m}
+	hero := game.Hero{hX, hY, 10, manager.GetTileOrNil("fire_fiend"), &m}
 
 	m.AddObject(&hero, hero.X, hero.Y)
 

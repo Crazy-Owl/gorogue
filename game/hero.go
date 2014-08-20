@@ -5,14 +5,14 @@ import (
 )
 
 type Hero struct {
-	X          int32
-	Y          int32
+	X          uint32
+	Y          uint32
 	HP         int32
 	Tile       *Tile
 	CurrentMap *TiledMap
 }
 
-func (h *Hero) DrawAt(renderer *sdl.Renderer, x int32, y int32) {
+func (h *Hero) DrawAt(renderer *sdl.Renderer, x uint32, y uint32) {
 	h.Tile.DrawAt(renderer, x, y)
 }
 
@@ -20,7 +20,7 @@ func (h *Hero) Update(dt uint32) {
 	return
 }
 
-func (h *Hero) MoveTo(x, y int32) {
+func (h *Hero) MoveTo(x, y uint32) {
 	srcCell := h.CurrentMap.Get(h.X, h.Y)
 	destCell := h.CurrentMap.Get(x, y)
 	if destCell != nil && (destCell.Is("passable") || destCell.Is("ground_passable")) {
@@ -32,7 +32,7 @@ func (h *Hero) MoveTo(x, y int32) {
 }
 
 func (h *Hero) Move(dx, dy int32) {
-	h.MoveTo(h.X+dx, h.Y+dy)
+	h.MoveTo(uint32(int32(h.X)+dx), uint32(int32(h.Y)+dy))
 }
 
 func (h *Hero) Interact(e Entity) {

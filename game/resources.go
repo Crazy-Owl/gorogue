@@ -174,8 +174,8 @@ func (manager *ResourceManager) GetTileOrNil(key string) (tile *Tile) {
 	return
 }
 
-func (tile *Tile) DrawAt(renderer *sdl.Renderer, x, y int32) {
-	dest := sdl.Rect{x, y, tile.rect.W, tile.rect.H}
+func (tile *Tile) DrawAt(renderer *sdl.Renderer, x, y uint32) {
+	dest := sdl.Rect{int32(x), int32(y), tile.rect.W, tile.rect.H}
 	renderer.Copy(tile.texture, tile.rect, &dest)
 }
 
